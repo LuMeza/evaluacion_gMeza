@@ -10,7 +10,7 @@ namespace DL
     {
         public static string Get()
         {
-            string conexion = "Data Source=MEZACARRILLOGUA\\LUPIZ;Initial Catalog=GMezaTickets;Integrated Security=True;";
+            string conexion = "Data Source=MEZACARRILLOGUA\\LUPIZ;Initial Catalog=evaluacion_gmeza;Integrated Security=True;";
 
             return conexion;
         }
