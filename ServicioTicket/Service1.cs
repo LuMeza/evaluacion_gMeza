@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.NetworkInformation;
+using System.Runtime.InteropServices.ComTypes;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +63,18 @@ namespace ServicioTicket
                 {
                     string data = await response.Content.ReadAsStringAsync();
                     eventLog1.WriteEntry("Respuesta de la API: " + data);
+
+                    string rutaServicioTicket = AppDomain.CurrentDomain.BaseDirectory;
+                    
+                    string rutaCompleta = System.IO.Path.Combine(rutaServicioTicket,"Log","HistoricoTickets");
+
+                    string logLn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "| " + data + Environment.NewLine;
+
+                    using (StreamWriter sw = File.AppendText(rutaCompleta))
+                    {
+                        sw.Write(logLn);
+                    }
+
                 }
                 else
                 {
