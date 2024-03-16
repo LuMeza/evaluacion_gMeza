@@ -53,8 +53,6 @@ namespace ServicioTicket
 
         private async void OnTimerElapsed(object sender, ElapsedEventArgs e)
         {
-            //string porcentaje = (SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString() + "%";
-            //eventLog1.WriteEntry("Porcentaje actual de la batería: " + porcentaje);
             try
             {
                 HttpResponseMessage response = await httpClient.PostAsync("http://localhost:51427/api/tickets/procesar", null);
